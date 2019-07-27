@@ -7,9 +7,14 @@ public class Gates : MonoBehaviour
     public Transform gateTarget;
     public GameObject playerCharacter;
 
-    public void OnTriggerEnter(Collider other)
+    private void Start()
+    {
+        
+    }
+    void OnTriggerEnter(Collider playerCharacter)
     {
         playerCharacter.transform.position = gateTarget.transform.position;
-        Debug.Log(gateTarget.transform.position);
+        Debug.Log("Gate target = " + gateTarget.transform.position);
+        Debug.Log("Player Position = " + playerCharacter.transform.position);
     }
 }    
