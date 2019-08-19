@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+
+    public string _colour;
+
     [Tooltip("Speed multiplier for horizontal & vertical rotation.")]
     public Vector2 turnSpeed = new Vector2(1, 1);
 

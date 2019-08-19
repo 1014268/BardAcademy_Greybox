@@ -27,7 +27,7 @@ Material:
     - _Brightness: 0
     - _Contour: 0.5
     - _Contrast: 0.5
-    - _Hue: 0
+    - _Hue: 0.134
     - _Saturation: 0.5
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0.5}
