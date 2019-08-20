@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class LevelLogic : MonoBehaviour
 {
-    public string _colour;
-    public string _name;
+    public string _level;
     bool _interact;
 
     public GameObject _bluePortal;
@@ -24,11 +23,13 @@ public class LevelLogic : MonoBehaviour
     public GameObject _pointPurple;
     public GameObject _pointRed;
 
+    PlayerLogic _playerLogic;
+
     // Start is called before the first frame update
     void Start()
     {
         _objectSet();
-        _colour = "blue";
+        _playerLogic._target = "blue";
     }
 
     // Update is called once per frame
@@ -63,6 +64,8 @@ public class LevelLogic : MonoBehaviour
 
         _pointPurple.SetActive(false);
         _pointRed.SetActive(false);
+
+        _playerLogic = FindObjectOfType<PlayerLogic>();
     }
 
     void _interactCheck()
@@ -79,24 +82,27 @@ public class LevelLogic : MonoBehaviour
 
     void _completionCheck()
     {
-        if(_colour == "blue")
+        if (_level == _playerLogic._target)
         {
-            _blueFinish();
-            Debug.Log("Blue COMPLETE!");
-        }
-        else if(_colour == "purple")
-        {
-            _purpleFinish();
-            Debug.Log("Purple COMPLETE!");
-        }
-        else if(_colour == "red")
-        {
-            _redFinish();
-            Debug.Log("Red COMPLETE!");
-        }
-        else
-        {
+            if (_level == "blue")
+            {
+                _blueFinish();
+                Debug.Log("Blue COMPLETE!");
+            }
+            else if (_level == "purple")
+            {
+                _purpleFinish();
+                Debug.Log("Purple COMPLETE!");
+            }
+            else if (_level == "red")
+            {
+                _redFinish();
+                Debug.Log("Red COMPLETE!");
+            }
+            else
+            {
 
+            }
         }
     }
 
@@ -110,8 +116,7 @@ public class LevelLogic : MonoBehaviour
         _purpleVis.SetActive(true);
         _pointPurple.SetActive(true);
 
-        _interact = false;
-        _colour = "purple";
+        _playerLogic._target = "purple";
     }
 
     void _purpleFinish()
@@ -124,8 +129,7 @@ public class LevelLogic : MonoBehaviour
         _redVis.SetActive(true);
         _pointRed.SetActive(true);
 
-        _interact = false;
-        _colour = "red";
+        _playerLogic._target = "red";
     }
 
     void _redFinish()
